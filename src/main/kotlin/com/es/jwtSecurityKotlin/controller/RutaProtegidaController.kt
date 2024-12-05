@@ -1,5 +1,6 @@
 package com.es.jwtSecurityKotlin.controller
 
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,4 +21,12 @@ class RutaProtegidaController {
         return "Este recurso sólo puede ser accedido por usuarios registrados en la BDD ☆*: .｡. o(≧▽≦)o .｡.:*☆"
     }
 
+    @GetMapping("/usuairo_autenticado")
+    fun saludarUsuarioAutenticado(authentication: Authentication): String{
+
+        // Objetivo es saludar al usuario autenticado
+       val userName =  authentication.name
+
+        return "HAil" + userName
+    }
 }
